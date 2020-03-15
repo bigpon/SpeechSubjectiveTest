@@ -1,0 +1,43 @@
+text:
+    PK: 
+        C: speech QUALITY # criteria
+        Ans: higher # answer
+        Q: Which file has Ans Criteria? # question
+    XAB: 
+        C: "PITCH" # criteria
+        Ans: closer # answer
+        Q: The Criteria of which file is Ans to that of the reference file? # question
+    MOS: 
+        C: speech QUALITY # criteria
+        Q: How is the Criteria of the file? # question
+    SIM: 
+        Q: Are the speakers of the two audio files the SAME? # question
+        posAns: the same # positive answer
+        negAns: different # negative answer
+examples:
+    MOS: 
+        - data/example/MOS/exp1.wav
+        - data/example/MOS/exp2.wav
+    XAB: 
+        ref: data/example/XAB/ref.wav # reference example
+        pos: data/example/XAB/pos.wav # positive example
+        neg: data/example/XAB/neg.wav # negative example
+c_text:
+    configf: evaluation # the config file of the evaluations (configf)
+    system: method # the synonym of test system (configf)
+    reference: reference # the synonym of reference system (configf)
+    t_set: set # the synonym of test set (configf)
+    t_type: type # the synonym of test type (configf)
+    recordf: record # the result record file (recordf)
+    n_subset: MAX_count # the synonym of the number of sub sets (recordf)
+    subset_idx: count # the synonym of the indexes of sub sets (recordf)
+    user_name: Subject_name # the synonym of the list of user name (recordf)
+    t_subset: Subject_set # the synonym of the list of test subset (recordf)
+    date: time # the synonym of date (recordf)
+    systemf: test_system # the config file of the test systems (systemf)
+    templatedir: path # the synonym of the template path of the files (systemf)
+    spk: speaker # the synonym of speaker (systemf)
+    srcspk: srcspk # the synonym of srcspk (systemf)
+    tarspk: tarspk # the synonym of tarspk (systemf)
+    r_score: Score # the synonym of result score
+    t_finish: Finished # the synonym of test finish flag

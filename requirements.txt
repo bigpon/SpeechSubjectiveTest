@@ -1,0 +1,9 @@
+numpy
+scipy
+h5py
+docopt
+pyyaml
+playsound
+openpyxl
+pathlib
+argparse

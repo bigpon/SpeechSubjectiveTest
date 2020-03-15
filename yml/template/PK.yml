@@ -1,0 +1,14 @@
+FileA: filenameA.wav
+FileB: filenameB.wav
+Finished: False
+Score: -1.0
+conversion: False
+xgender: False
+gender: None
+pair: None
+srcspk: None
+tarspk: None
+method: None
+methodA: None
+methodB: None
+type: PK

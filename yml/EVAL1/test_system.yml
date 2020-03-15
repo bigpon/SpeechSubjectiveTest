@@ -1,0 +1,8 @@
+path: # the template format of file path of each system
+    MethodA: data/eval_name/system/srcspk-tarspk/filename
+    MethodB: data/eval_name/system/srcspk-tarspk/filename
+    Target: data/eval_name/system/tarspk/filename
+speaker: # the information of each speaker in evaluation data
+    SF3: F
+    SM3: M
+    TF1: F

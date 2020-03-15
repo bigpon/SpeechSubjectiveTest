@@ -1,0 +1,30 @@
+- method:
+      - MethodA
+      - MethodB
+      - Target
+  set:
+      - MOS_0.yml
+      - MOS_1.yml
+  type: MOS
+- method:
+      - MethodB*-MethodA-Target_ref # the method with * is the main system (expected answer)
+      - MethodA*-MethodB-Target_ref # the method with * is the main system (expected answer)
+  set:
+      - XAB_0.yml
+      - XAB_1.yml
+  type: XAB
+- method:
+      - MethodA
+      - MethodB
+  reference: Target_ref
+  set:
+      - SIM_0.yml
+      - SIM_1.yml
+  type: SIM
+- method:
+      - MethodB*-MethodA # the method with * is the main system (expected answer)
+      - MethodA*-MethodB # the method with * is the main system (expected answer)
+  set:
+      - PK_0.yml
+      - PK_1.yml
+  type: PK
