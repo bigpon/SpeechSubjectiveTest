@@ -39,6 +39,12 @@ Speech Quality Subjective Evaluation
 
 ```
 pip install -r requirements.txt
+
+# For Windows user
+pip install winsound
+
+# For Mac user
+pip install -U PyObjC 
 ```
 
 ### Folder structure

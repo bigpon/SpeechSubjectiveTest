@@ -8,10 +8,12 @@ import os
 import random
 import time
 import platform
-import winsound
-from playsound import playsound
 from openpyxl import Workbook
 from openpyxl import load_workbook
+try:
+    import winsound
+except ImportError:
+    from playsound import playsound
 
 def playspeech(filename):
     if os.path.exists(filename):
