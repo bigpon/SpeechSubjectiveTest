@@ -100,6 +100,13 @@ class ParserConf(ConfigInfo):
             sys.exit(0)
         return idx
 
+    def _check_idx(self, item, name, idx):
+        if idx >= len(item):
+            msg = "idx '%s' (%d) is out of the length of %s\n" % (name, idx, str(item))
+            msg += "The template path cannot be correctly splitted by slash.\n"
+            msg += "Please check the template path in 'test_system.yml'."
+            raise ValueError(msg)
+
     def _load_sysinfo(self):
         sysinfof = "%s%s.yml"%(self.yml_path, self.c_text['systemf'])
         if not self._check_file_exist(sysinfof):
@@ -109,6 +116,7 @@ class ParserConf(ConfigInfo):
         srcspk  = self.c_text['srcspk']
         tarspk  = self.c_text['tarspk']
         for system in list(t_paths.keys()):
+            t_paths[system] = t_paths[system].replace('\\', '/')
             t_path = t_paths[system].split('/')
             if srcspk in t_paths[system]:
                 if tarspk in t_paths[system]: # voice conversion
@@ -158,19 +166,25 @@ class ParserConf(ConfigInfo):
         return file_lists, flen
     
     def _parse_spkinfo(self, pathinfo, genderinfo, t_dict, filename):
+        filename = filename.replace('\\', '/')
         item = filename.split('/')
         if pathinfo['tar'] == None: # only source speaker
+            self._check_idx(item, 'src', pathinfo['src'])
             t_dict['srcspk'] = item[pathinfo['src']]
             t_dict['gender'] = genderinfo[t_dict['srcspk']]
         elif pathinfo['src'] == None: # only target speaker
+            self._check_idx(item, 'tar', pathinfo['tar'])
             t_dict['tarspk'] = item[pathinfo['tar']]
             t_dict['gender'] = genderinfo[t_dict['tarspk']]
         else: # voice conversion
             if pathinfo['src'] == pathinfo['tar']: # format /srcspk/tarspk/ or /tarspk/srcspk/
+                self._check_idx(item, 'src', pathinfo['src'])
                 spkpair = item[pathinfo['src']].split(pathinfo['split'])
                 t_dict['srcspk'] = spkpair[pathinfo['src_sub']]
                 t_dict['tarspk'] = spkpair[pathinfo['tar_sub']]
             else: # format /srcspk-tarspk/ or /tarspk-srcspk/
+                self._check_idx(item, 'src', pathinfo['src'])
+                self._check_idx(item, 'tar', pathinfo['tar'])
                 t_dict['srcspk'] = item[pathinfo['src']]
                 t_dict['tarspk'] = item[pathinfo['tar']]
             t_dict['conversion'] = True
